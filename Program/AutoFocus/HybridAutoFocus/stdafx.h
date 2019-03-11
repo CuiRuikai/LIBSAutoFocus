@@ -52,3 +52,10 @@
 #endif
 
 
+#include<vector>
+#include<string>
+
+
+#define DEVICEID_TDC 83//TDC代号
+#define LENGTH_5DIVIDE 171520//总长度除5，实际为171520
+#define LENGTH_MAX 857600//实际总长度为857600
