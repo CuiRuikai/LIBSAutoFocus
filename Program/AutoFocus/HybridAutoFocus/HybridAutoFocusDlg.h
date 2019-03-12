@@ -3,6 +3,10 @@
 //
 
 #pragma once
+#include "afxwin.h"
+#include"stdafx.h"
+#include"Motor.h"
+#include"Utility.h"
 
 
 // CHybridAutoFocusDlg ¶Ô»°¿ò
@@ -31,4 +35,16 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+
+public:
+	Utility utility;
+	Motor motor;
+	std::string serialNo;
+public:
+	CComboBox m_MotorBox;
+	afx_msg void OnBnClickedGetmotors();
+	afx_msg void OnCbnSelchangeMotorbox();
+	afx_msg void OnBnClickedOpenmotor();
+	afx_msg void OnBnClickedClosemotor();
+	afx_msg void OnClose();
 };

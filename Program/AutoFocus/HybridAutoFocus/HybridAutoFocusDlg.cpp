@@ -58,12 +58,18 @@ CHybridAutoFocusDlg::CHybridAutoFocusDlg(CWnd* pParent /*=NULL*/)
 void CHybridAutoFocusDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_MotorBox, m_MotorBox);
 }
 
 BEGIN_MESSAGE_MAP(CHybridAutoFocusDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_GetMotors, &CHybridAutoFocusDlg::OnBnClickedGetmotors)
+	ON_CBN_SELCHANGE(IDC_MotorBox, &CHybridAutoFocusDlg::OnCbnSelchangeMotorbox)
+	ON_BN_CLICKED(IDC_OpenMotor, &CHybridAutoFocusDlg::OnBnClickedOpenmotor)
+	ON_BN_CLICKED(IDC_CloseMotor, &CHybridAutoFocusDlg::OnBnClickedClosemotor)
+	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
 
@@ -152,3 +158,66 @@ HCURSOR CHybridAutoFocusDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CHybridAutoFocusDlg::OnBnClickedGetmotors()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	std::vector<std::string> serialNumbers;//存储所得编号
+	std::vector<TLI_DeviceInfo> vecDecviceInfo;//存储所得编号对应的信息
+	int size = motor.getDevices(DEVICEID_TDC, serialNumbers, vecDecviceInfo);//获取编号、信息、数量
+
+	if (size == 0) 
+	{
+		MessageBox(_T("No Motor. Please check "), _T("OK"), MB_OK);
+	}
+	CString deviceNum;//临时存储设备编号的CString变量
+	for (int i = 0; i < size; i++)//遍历全部设备编号
+	{
+		deviceNum = serialNumbers[i].c_str();//转换
+		m_MotorBox.AddString(deviceNum);//添加
+	}
+	m_MotorBox.SetCurSel(0);// 默认选择第一项 
+}
+
+
+void CHybridAutoFocusDlg::OnCbnSelchangeMotorbox()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CString strMotor;
+	int nSel;
+
+	nSel = m_MotorBox.GetCurSel();// 获取组合框控件的列表框中选中项的索引
+	m_MotorBox.GetLBText(nSel, strMotor);// 根据选中项索引获取该项字符串   
+
+	serialNo = utility.toString(strMotor);//存储到全局变量中
+}
+
+
+
+void CHybridAutoFocusDlg::OnBnClickedOpenmotor()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	if (motor.connect(serialNo) == false)
+		MessageBox(_T("TDC打开失败"), _T("Warning"), MB_OK);
+	else
+		MessageBox(_T("TDC打开成功"), _T("Message"), MB_OK);
+}
+
+
+void CHybridAutoFocusDlg::OnBnClickedClosemotor()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	if (motor.disconnect(serialNo) == true)
+		MessageBox(_T("TDC成功关闭"), _T("Message"), MB_OK);
+	else
+		MessageBox(_T("TDC关闭失败"), _T("Message"), MB_OK);
+}
+
+
+void CHybridAutoFocusDlg::OnClose()
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	motor.disconnect(serialNo);
+	CDialogEx::OnClose();
+}
