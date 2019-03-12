@@ -51,6 +51,8 @@ END_MESSAGE_MAP()
 
 CHybridAutoFocusDlg::CHybridAutoFocusDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_HYBRIDAUTOFOCUS_DIALOG, pParent)
+	, m_bRun(FALSE)//初始化运行标志
+	, m_hCam(NULL)//初始化相机句柄
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -70,6 +72,9 @@ BEGIN_MESSAGE_MAP(CHybridAutoFocusDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_OpenMotor, &CHybridAutoFocusDlg::OnBnClickedOpenmotor)
 	ON_BN_CLICKED(IDC_CloseMotor, &CHybridAutoFocusDlg::OnBnClickedClosemotor)
 	ON_WM_CLOSE()
+	ON_BN_CLICKED(IDC_OpenCam, &CHybridAutoFocusDlg::OnBnClickedOpencam)
+	ON_BN_CLICKED(IDC_CloseCam, &CHybridAutoFocusDlg::OnBnClickedClosecam)
+	ON_BN_CLICKED(IDC_StartFocus, &CHybridAutoFocusDlg::OnBnClickedStartfocus)
 END_MESSAGE_MAP()
 
 
@@ -218,6 +223,125 @@ void CHybridAutoFocusDlg::OnBnClickedClosemotor()
 void CHybridAutoFocusDlg::OnClose()
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	//相机关闭处理
+	if (m_bRun != false)
+	{
+		MVStopGrab(m_hCam);
+	}
+	MVTerminateLib();
+	//电机关闭处理
 	motor.disconnect(serialNo);
 	CDialogEx::OnClose();
+}
+
+
+void CHybridAutoFocusDlg::OnBnClickedOpencam()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	int nCams = 0;//相机数量，默认为零
+	MVGetNumOfCameras(&nCams);//读取相机数量
+
+	if (nCams == 0)
+	{
+		MessageBox(_T("没有找到相机,请确认连接和相机的IP设置"), _T("提示"), MB_OK);
+		return;
+	}
+
+	MVSTATUS_CODES r = MVOpenCamByIndex(0, &m_hCam);//按照编号打开相机，仅一个相机，打开0号，得到相机句柄
+	if (m_hCam == NULL)//检验是否成功打开相机并获取句柄
+	{
+		if (r == MVST_ACCESS_DENIED)
+			MessageBox(_T("无法打开相机，可能正被别的软件控制"), _T("提示"), MB_OK);
+		else
+			MessageBox(_T("无法打开相机"), _T("提示"), MB_OK);
+		return;
+	}
+	//读取相机图象信息
+	int w, h;//存储图像宽度，高度
+	MVGetWidth(m_hCam, &w);//相机图像宽度
+	MVGetHeight(m_hCam, &h);//相机图象高度
+	MVGetPixelFormat(m_hCam, &m_PixelFormat);//相机图象像素格式
+
+	m_image.CreateByPixelFormat(w, h, m_PixelFormat);//根据宽度、高度、和像素格式创建图像
+
+
+	unsigned int minPacketSize, maxPacketSize;
+	r = MVGetPacketSizeRange(m_hCam, &minPacketSize, &maxPacketSize);
+	if (r != MVST_SUCCESS) {
+		MessageBox(_T("获取包大小失败"), _T("提示"), MB_OK);
+		return;
+	}
+	r = MVSetPacketSize(m_hCam, minPacketSize);
+	if (r != MVST_SUCCESS) {
+		MessageBox(_T("设置包大小失败"), _T("提示"), MB_OK);
+		return;
+	}
+	MVSetExposureTime(m_hCam, 100000);//手动设置曝光时间
+
+	//unsigned int minPacketDelay, maxPacketDelay;
+	//r = MVGetPacketDelayRange(m_hCam, &minPacketDelay, &maxPacketDelay);
+	//if (r != MVST_SUCCESS) {
+	//	MessageBox(_T("获取包延迟失败"), _T("提示"), MB_OK);
+	//	return;
+	//}
+	//r = MVSetPacketDelay(m_hCam, minPacketDelay);
+	//if (r != MVST_SUCCESS) {
+	//	MessageBox(_T("设置包延迟失败"), _T("提示"), MB_OK);
+	//	return;
+	//}
+}
+
+
+void CHybridAutoFocusDlg::OnBnClickedClosecam()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	MVStopGrab(m_hCam);//停止采集图像
+	MVCloseCam(m_hCam);//断开相机连接
+	m_bRun = false;//修改采集标志
+}
+
+void CHybridAutoFocusDlg::DrawImage()//在picture control 控件中显示获取的图像
+{
+	CRect rct;
+	GetDlgItem(IDC_Pic)->GetClientRect(&rct);
+	int dstW = rct.Width();
+	int dstH = rct.Height();
+	CDC *pDC = GetDlgItem(IDC_Pic)->GetDC();
+	{
+		pDC->SetStretchBltMode(COLORONCOLOR);
+		m_image.Draw(pDC->GetSafeHdc(), 0, 0, dstW, dstH);
+	}
+	ReleaseDC(pDC);//记得释放
+}
+
+int CHybridAutoFocusDlg::OnStreamCB(MV_IMAGE_INFO *pInfo)//相应回调函数的处理
+{
+	MVInfo2Image(m_hCam, pInfo, &m_image);//将回调函数收到的图像信息转换为图像
+	DrawImage();//绘制图像
+
+	return 0;
+}
+
+int __stdcall StreamCB(MV_IMAGE_INFO *pInfo, ULONG_PTR nUserVal)//回调函数
+{
+	CHybridAutoFocusDlg *pDlg = (CHybridAutoFocusDlg*)nUserVal;
+	return (pDlg->OnStreamCB(pInfo));
+}
+
+
+
+void CHybridAutoFocusDlg::OnBnClickedStartfocus()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	//设置快门模式，设置为连续采集模式
+	TriggerModeEnums enumMode;
+	MVGetTriggerMode(m_hCam, &enumMode);
+	if (enumMode != TriggerMode_Off)
+	{
+		MVSetTriggerMode(m_hCam, TriggerMode_Off);
+		Sleep(100);
+	}
+
+	MVStartGrab(m_hCam, StreamCB, (ULONG_PTR)this);//采集图像，并显示到pic
+	m_bRun = true;
 }

@@ -7,6 +7,8 @@
 #include"stdafx.h"
 #include"Motor.h"
 #include"Utility.h"
+#include "MVGigE.h" 
+#include "MVImage.h" 
 
 
 // CHybridAutoFocusDlg 对话框
@@ -37,9 +39,26 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 public:
-	Utility utility;
+	//定义电机对象
 	Motor motor;
+	//定义相机句柄
 	std::string serialNo;
+
+	//定义相机句柄对象 
+	HANDLE m_hCam;
+	//定义图像处理对象 
+	MVImage m_image;
+	//定义像素格式对象 
+	MV_PixelFormatEnums m_PixelFormat;
+	//采集标识 
+	bool m_bRun;
+	//通过回调函数获取图像数据信息 
+	int OnStreamCB(MV_IMAGE_INFO *pInfo);
+	//在Pictur Control空间中画出图象
+	void DrawImage();
+
+	//工具函数
+	Utility utility;
 public:
 	CComboBox m_MotorBox;
 	afx_msg void OnBnClickedGetmotors();
@@ -47,4 +66,7 @@ public:
 	afx_msg void OnBnClickedOpenmotor();
 	afx_msg void OnBnClickedClosemotor();
 	afx_msg void OnClose();
+	afx_msg void OnBnClickedOpencam();
+	afx_msg void OnBnClickedClosecam();
+	afx_msg void OnBnClickedStartfocus();
 };
