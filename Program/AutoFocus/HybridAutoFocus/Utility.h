@@ -1,6 +1,7 @@
 #pragma once
 #include"MyImg.h"
 #include"stdafx.h"
+#include"Fit.h"
 class Utility
 {
 public:
@@ -18,4 +19,8 @@ public:
 	CString AllocateImgName();
 	//寻找清晰范围
 	int FindClearSection(std::vector<MyImg> imgVec,int &start, int &end);
+	//拟合寻找最优点
+	int ployfitPos(std::vector<MyImg> imgVec);
+	//将图片信息输出到文件
+	bool writeInfoToFile(std::vector<MyImg> imgVec);
 };

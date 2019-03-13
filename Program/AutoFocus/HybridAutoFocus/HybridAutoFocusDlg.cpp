@@ -342,10 +342,30 @@ void CHybridAutoFocusDlg::OnBnClickedStartfocus()
 
 	Motion motion(motor, m_hCam, m_image, utility);
 	int start = LENGTH_MIN, end = LENGTH_MAX;
+
+	//for Test 
+	std::string pathName = ".\\SavedImages\\ImageInfo.txt";
+	std::ofstream recordFile(pathName, std::ios::app);
+	recordFile << "Focus Position: " << std::endl;
+	//Test 1: 改进的爬山算法
 	for (int i = 0; i < 10; i++) 
 	{
 		std::vector<MyImg> imgVec;
 		motion.moveAndGrabImgs(start, end, 5, imgVec);
+		utility.writeInfoToFile(imgVec);
 		utility.FindClearSection(imgVec, start, end);
+		recordFile << "Focus Section: " << start << " " << end << std::endl << std::endl;
 	}
+
+	//Test 2:混合算法
+	std::vector<MyImg> imgVec;
+	motion.moveAndGrabImgs(start, end, 5, imgVec);
+	utility.writeInfoToFile(imgVec);
+	utility.FindClearSection(imgVec, start, end);
+	std::vector<MyImg> secondFind;
+	motion.moveAndGrabImgs(start, end, 5, secondFind);
+	utility.writeInfoToFile(secondFind);
+	int clearPos=utility.ployfitPos(secondFind);
+	recordFile << "Focus Position: " <<clearPos<< std::endl;
+	motor.moveToPosition(clearPos);
 }

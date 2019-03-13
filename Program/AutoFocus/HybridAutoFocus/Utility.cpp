@@ -91,3 +91,50 @@ int Utility::FindClearSection(std::vector<MyImg> imgVec, int & start, int & end)
 
 	return end - start;//return the length of this section
 }
+
+int Utility::ployfitPos(std::vector<MyImg> imgVec)
+{
+	Fit fit;
+	std::vector<double> x, y;
+	int num = imgVec.size();
+	x.resize(num);
+	y.resize(num);
+	for (int i = startIndex + 1; i < imgVec.size(); i++) {
+		x[i] = imgVec[i].position;
+		y[i] = imgVec[i].clarityScore;
+	}
+
+	int n = 3;
+	fit.polyfit(x, y, n, true);
+
+	double max = 0.0, focusedPos = 0.0;
+	for (double i = imgVec[0].position; i < imgVec[imgVec.size() - 1].position; i++)
+	{
+		double y = fit.getY(i);
+		if (y > max)
+		{
+			max = y;
+			focusedPos = i;
+		}
+	}
+	return focusedPos;
+}
+
+bool Utility::writeInfoToFile(std::vector<MyImg> imgVec)
+{
+	std::string pathName = ".\\SavedImages\\ImageInfo.txt";
+	std::ofstream recordFile(pathName,std::ios::app);
+
+
+	if (recordFile) 
+	{
+		recordFile << "Focus Round Info:" << std::endl;
+		recordFile << "ImageName\t\t" << "Position\t" << "Score" << std::endl;
+		for (int i = 0; i < imgVec.size(); i++)
+		{
+			recordFile << imgVec[i].imgName << "\t" << imgVec[i].position << "\t" << imgVec[i].clarityScore << std::endl;
+		}
+	}
+	recordFile.close();//执行完操作后关闭文件句柄
+	return true;
+}

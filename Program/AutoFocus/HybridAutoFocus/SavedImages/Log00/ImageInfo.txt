@@ -1,0 +1,81 @@
+Focus Position: 
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0000.jpg	-2	3179.12
+.\SavedImages\Image_0001.jpg	171526	3316.41
+.\SavedImages\Image_0002.jpg	343054	3492.59
+.\SavedImages\Image_0003.jpg	514581	3516.73
+.\SavedImages\Image_0004.jpg	686107	3404.17
+.\SavedImages\Image_0005.jpg	857606	3318.16
+Focus Section: 343054 686107
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0006.jpg	343051	3479.39
+.\SavedImages\Image_0007.jpg	411669	3514.38
+.\SavedImages\Image_0008.jpg	480286	3518.75
+.\SavedImages\Image_0009.jpg	548902	3473.64
+.\SavedImages\Image_0010.jpg	617517	3428.23
+.\SavedImages\Image_0011.jpg	686131	3384.07
+Focus Section: 411669 548902
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0012.jpg	411667	3510.05
+.\SavedImages\Image_0013.jpg	439118	3511.5
+.\SavedImages\Image_0014.jpg	466571	3490.24
+.\SavedImages\Image_0015.jpg	494024	3475.75
+.\SavedImages\Image_0016.jpg	521477	3463.12
+.\SavedImages\Image_0017.jpg	548929	3479.93
+Focus Section: 411667 466571
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0018.jpg	411665	3530.99
+.\SavedImages\Image_0019.jpg	422649	3533.07
+.\SavedImages\Image_0020.jpg	433635	3540.33
+.\SavedImages\Image_0021.jpg	444621	3533.22
+.\SavedImages\Image_0022.jpg	455605	3523.29
+.\SavedImages\Image_0023.jpg	466592	3523.7
+Focus Section: 422649 444621
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0024.jpg	422647	3520.57
+.\SavedImages\Image_0025.jpg	427046	3526.08
+.\SavedImages\Image_0026.jpg	431444	3527.12
+.\SavedImages\Image_0027.jpg	435842	3530.09
+.\SavedImages\Image_0028.jpg	440240	3518.14
+.\SavedImages\Image_0029.jpg	444640	3519.93
+Focus Section: 431444 440240
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0030.jpg	431442	3521.77
+.\SavedImages\Image_0031.jpg	433204	3524.82
+.\SavedImages\Image_0032.jpg	434964	3526.84
+.\SavedImages\Image_0033.jpg	436725	3520.68
+.\SavedImages\Image_0034.jpg	438485	3523.49
+.\SavedImages\Image_0035.jpg	440245	3531.76
+Focus Section: 438485 440245
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0036.jpg	438484	3531.98
+.\SavedImages\Image_0037.jpg	438838	3528.52
+.\SavedImages\Image_0038.jpg	439190	3526.48
+.\SavedImages\Image_0039.jpg	439544	3524.49
+.\SavedImages\Image_0040.jpg	439894	3529.5
+.\SavedImages\Image_0041.jpg	440247	3533.98
+Focus Section: 439894 440247
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0042.jpg	439894	3533.35
+.\SavedImages\Image_0043.jpg	439964	3422.6
+.\SavedImages\Image_0044.jpg	440035	3279.15
+.\SavedImages\Image_0045.jpg	440103	3267.91
+.\SavedImages\Image_0046.jpg	440175	3264.89
+.\SavedImages\Image_0047.jpg	440243	3256.45
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0048.jpg	439893	3257.06
+.\SavedImages\Image_0049.jpg	439907	3249.45
+.\SavedImages\Image_0050.jpg	439920	3450.57
+.\SavedImages\Image_0051.jpg	439934	3467.09
+.\SavedImages\Image_0052.jpg	439948	3469.7
+.\SavedImages\Image_0053.jpg	439962	3464.57
+Focus Position: 439961
