@@ -3,6 +3,7 @@
 
 
 Utility::Utility()
+	:startIndex(0)
 {
 }
 
@@ -43,44 +44,15 @@ CString Utility::toCString(std::string str)
 #endif 
 }
 
-CString Utility::AllocateImgName(int startIndex, std::vector<MyImg>& ImgVec)
+CString Utility::AllocateImgName()
 {
 	char number[5];//编号长度为4，最后为‘\0’
 	sprintf_s(number, "%04d", startIndex);//int格式化转换位string,注意最后不要有\n
+
+	startIndex++;//增加，准备下次使用
 	number[4] = '\0';//结束标志
-					 //存储到当前目录的子文件夹SavedImages
+	//存储到当前目录的子文件夹SavedImages
 	std::string name = ".\\SavedImages\\Image_" + std::string(number) + ".jpg";//char * 转string，用构造函数
 
-	MyImg temp;//临时存储信息的变
-	temp.index = startIndex;//编号
-	temp.imgName = name;//名字
-
-	ImgVec.push_back(temp);//存入vector
-
-	return toCString(ImgVec.back().imgName);//返回图片名称
-	return CString();
+	return toCString(name);
 }
-
-
-
-/*
- *图片名称分配函数
- *Note:需要使用引用
- */
-//CString Utility::AllocateImgName(int position,int startIndex,std::vector<MyImg> &ImgVec)
-//{
-//	char number[5];//编号长度为4，最后为‘\0’
-//	sprintf_s(number, "%04d", startIndex);//int格式化转换位string,注意最后不要有\n
-//	number[4] = '\0';//结束标志
-//					 //存储到当前目录的子文件夹SavedImages
-//	std::string name = ".\\SavedImages\\Image_" + std::string(number) + ".jpg";//char * 转string，用构造函数
-//
-//	MyImg temp;//临时存储信息的变
-//	temp.index = startIndex;//编号
-//	temp.imgName = name;//名字
-//	temp.position = position;
-//
-//	ImgVec.push_back(temp);//存入vector
-//
-//	return toCString(ImgVec.back().imgName);//返回图片名称
-//}

@@ -9,6 +9,7 @@
 #include"Utility.h"
 #include "MVGigE.h" 
 #include "MVImage.h" 
+#include"Motion.h"
 
 
 // CHybridAutoFocusDlg 对话框
@@ -59,6 +60,7 @@ public:
 
 	//工具函数
 	Utility utility;
+	std::vector<MyImg> imgVec;
 public:
 	CComboBox m_MotorBox;
 	afx_msg void OnBnClickedGetmotors();

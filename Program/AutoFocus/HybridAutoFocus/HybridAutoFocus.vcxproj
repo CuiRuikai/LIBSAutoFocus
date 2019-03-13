@@ -188,6 +188,7 @@
     <ClInclude Include="Fit.h" />
     <ClInclude Include="HybridAutoFocus.h" />
     <ClInclude Include="HybridAutoFocusDlg.h" />
+    <ClInclude Include="Motion.h" />
     <ClInclude Include="Motor.h" />
     <ClInclude Include="MyImg.h" />
     <ClInclude Include="Resource.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="Fit.cpp" />
     <ClCompile Include="HybridAutoFocus.cpp" />
     <ClCompile Include="HybridAutoFocusDlg.cpp" />
+    <ClCompile Include="Motion.cpp" />
     <ClCompile Include="Motor.cpp" />
     <ClCompile Include="MyImg.cpp" />
     <ClCompile Include="stdafx.cpp">

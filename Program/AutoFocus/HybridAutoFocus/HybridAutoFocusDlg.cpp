@@ -183,6 +183,7 @@ void CHybridAutoFocusDlg::OnBnClickedGetmotors()
 		deviceNum = serialNumbers[i].c_str();//转换
 		m_MotorBox.AddString(deviceNum);//添加
 	}
+	m_MotorBox.SetCurSel(0);// 默认选择第一项 
 	serialNo = serialNumbers[0];
 }
 
@@ -204,6 +205,7 @@ void CHybridAutoFocusDlg::OnCbnSelchangeMotorbox()
 void CHybridAutoFocusDlg::OnBnClickedOpenmotor()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	motor.setSerialNo(serialNo);
 	if (motor.connect() == false)
 		MessageBox(_T("TDC打开失败"), _T("Warning"), MB_OK);
 	else
@@ -345,4 +347,9 @@ void CHybridAutoFocusDlg::OnBnClickedStartfocus()
 
 	MVStartGrab(m_hCam, StreamCB, (ULONG_PTR)this);//采集图像，并显示到pic
 	m_bRun = true;
+
+	Motion motion(motor, m_hCam, m_image, utility);
+	int i=motion.moveAndGrabImgs(LENGTH_MIN,LENGTH_MAX,5,imgVec);
+	
+
 }
