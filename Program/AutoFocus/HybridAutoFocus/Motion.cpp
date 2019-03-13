@@ -28,6 +28,9 @@ int Motion::moveAndGrabImgs(int startPos, int stopPos, int step, std::vector<MyI
 	int stepLength = (stopPos - startPos) / step;//计算每次移动长度
 
 	int pos = motor.moveToPosition(startPos);//移动到初始位置
+	//停稳
+	CTime t1 = CTime::GetCurrentTime();
+	while ((CTime::GetCurrentTime() - t1) < 2);
 
 	for (int i = 0; i < step + 1; i++)
 	{
@@ -54,6 +57,9 @@ int Motion::moveAndGrabImgs(int startPos, int stopPos, int step, std::vector<MyI
 			pos = LENGTH_MAX;
 
 		pos = motor.moveToPosition(pos);
+		//停稳
+		CTime t1 = CTime::GetCurrentTime();
+		while ((CTime::GetCurrentTime() - t1) < 2);
 	}
 	return starIndex;
 }

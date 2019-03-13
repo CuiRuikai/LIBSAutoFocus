@@ -279,19 +279,11 @@ void CHybridAutoFocusDlg::OnBnClickedOpencam()
 		MessageBox(_T("设置包大小失败"), _T("提示"), MB_OK);
 		return;
 	}
-	MVSetExposureTime(m_hCam, 100000);//手动设置曝光时间
-
-	//unsigned int minPacketDelay, maxPacketDelay;
-	//r = MVGetPacketDelayRange(m_hCam, &minPacketDelay, &maxPacketDelay);
-	//if (r != MVST_SUCCESS) {
-	//	MessageBox(_T("获取包延迟失败"), _T("提示"), MB_OK);
-	//	return;
-	//}
-	//r = MVSetPacketDelay(m_hCam, minPacketDelay);
-	//if (r != MVST_SUCCESS) {
-	//	MessageBox(_T("设置包延迟失败"), _T("提示"), MB_OK);
-	//	return;
-	//}
+	MVSetExposureTime(m_hCam, 240000);//手动设置曝光时间
+	if (r == MVST_SUCCESS) {
+		MessageBox(_T("相机成功打开"), _T("提示"), MB_OK);
+		return;
+	}
 }
 
 
@@ -349,7 +341,11 @@ void CHybridAutoFocusDlg::OnBnClickedStartfocus()
 	m_bRun = true;
 
 	Motion motion(motor, m_hCam, m_image, utility);
-	int i=motion.moveAndGrabImgs(LENGTH_MIN,LENGTH_MAX,5,imgVec);
-	
-
+	int start = LENGTH_MIN, end = LENGTH_MAX;
+	for (int i = 0; i < 10; i++) 
+	{
+		std::vector<MyImg> imgVec;
+		motion.moveAndGrabImgs(start, end, 5, imgVec);
+		utility.FindClearSection(imgVec, start, end);
+	}
 }

@@ -16,5 +16,6 @@ public:
 	CString toCString(std::string str);
 	//Í¼Æ¬Ãû³Æ·ÖÅäº¯Êı
 	CString AllocateImgName();
+	//Ñ°ÕÒÇåÎú·¶Î§
+	int FindClearSection(std::vector<MyImg> imgVec,int &start, int &end);
 };
-

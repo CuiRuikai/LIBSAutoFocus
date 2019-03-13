@@ -56,3 +56,38 @@ CString Utility::AllocateImgName()
 
 	return toCString(name);
 }
+//从index开始比较清晰度，到size-1停止
+int Utility::FindClearSection(std::vector<MyImg> imgVec, int & start, int & end)
+{
+	double max = 0;
+	int maxIndex = 0;
+
+	for (int i=0; i < imgVec.size(); i++)//迭代
+	{
+		if (imgVec[i].clarityScore > max)
+		{
+			max = imgVec[i].clarityScore;
+			maxIndex = i;
+		}
+	}
+
+	if (maxIndex == 0) {//Note:i会变，要用index,越界检查对鲁棒性很重要
+		start = imgVec[maxIndex].position;
+		end = imgVec[maxIndex + 1].position;
+	}
+	else if (maxIndex == imgVec.size() - 1) {
+		start = imgVec[maxIndex - 1].position;
+		end = imgVec[maxIndex].position;
+	}
+	else {
+		start = imgVec[maxIndex - 1].position;
+		end = imgVec[maxIndex + 1].position;
+	}
+
+	if (start < 0)
+		start = 0;
+	if (end > LENGTH_MAX)
+		end = LENGTH_MAX;
+
+	return end - start;//return the length of this section
+}

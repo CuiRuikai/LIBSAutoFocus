@@ -60,7 +60,6 @@ public:
 
 	//¹¤¾ßº¯Êý
 	Utility utility;
-	std::vector<MyImg> imgVec;
 public:
 	CComboBox m_MotorBox;
 	afx_msg void OnBnClickedGetmotors();
