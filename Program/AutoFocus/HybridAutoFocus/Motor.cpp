@@ -54,28 +54,28 @@ int Motor::getDevices(int deviceID, std::vector<std::string> &serialNumbers, std
 	return 0;//失败则返回0，表示有0个电机
 }
 
-bool Motor::connect(std::string strSerialNo)
+bool Motor::connect()
 {
-	const char *serialNo = strSerialNo.c_str();//从string类型转换位const char*类型
+	const char *hMotor = serialNo.c_str();//从string类型转换位const char*类型
 	
 	if (_connected)//如果为true，则返回true；表示以经打开了
 		return true;
 
 	// open the device
-	if (CC_Open(serialNo) == 0)//函数成功执行CC_Open()执行成功返回值为0
+	if (CC_Open(hMotor) == 0)//函数成功执行CC_Open()执行成功返回值为0
 	{
 		_connected = true;//已打开
-		CC_LoadSettings(serialNo);// load the device settings,设定文件需要手动设置
-		CC_StartPolling(serialNo, 200);// start the device polling at 200ms intervals
+		CC_LoadSettings(hMotor);// load the device settings,设定文件需要手动设置
+		CC_StartPolling(hMotor, 200);// start the device polling at 200ms intervals
 		return true;//成功打开
 	}
 	else
 		return false;//打开失败
 }
 
-bool Motor::disconnect(std::string strSerialNo)
+bool Motor::disconnect()
 {
-	const char *serialNo = strSerialNo.c_str();//从string类型转换位const char*类型
+	const char *hMotor = serialNo.c_str();//从string类型转换位const char*类型
 
 	if (!_connected)
 	{
@@ -83,58 +83,58 @@ bool Motor::disconnect(std::string strSerialNo)
 	}
 
 	//stop polling
-	CC_StopPolling(serialNo);
+	CC_StopPolling(hMotor);
 	//close device
-	CC_Close(serialNo);
+	CC_Close(hMotor);
 
 	_connected = false;
 
 	return !_connected;//成功关闭
 }
 
-int Motor::moveToHome(std::string strSerialNo)
+int Motor::moveToHome()
 {
-	const char* serialNo = strSerialNo.c_str();//转换
+	const char* hMotor = serialNo.c_str();//转换
 
-	CC_ClearMessageQueue(serialNo);//清空消息队列
-	CC_Home(serialNo);//移动信号发出
+	CC_ClearMessageQueue(hMotor);//清空消息队列
+	CC_Home(hMotor);//移动信号发出
 
 	//等待移动完成
 	WORD messageType;
 	WORD messageId;
 	DWORD messageData;
-	CC_WaitForMessage(serialNo, &messageType, &messageId, &messageData);
+	CC_WaitForMessage(hMotor, &messageType, &messageId, &messageData);
 	while (messageType != 2 || messageId != 1)
 	{
-		CC_WaitForMessage(serialNo, &messageType, &messageId, &messageData);
+		CC_WaitForMessage(hMotor, &messageType, &messageId, &messageData);
 	}
 
 	// get actual poaition
-	int pos = CC_GetPosition(serialNo);
+	int pos = CC_GetPosition(hMotor);
 
 	return pos;//返回实际位置
 }
 
-int Motor::moveToPosition(std::string strSerialNo, int position)
+int Motor::moveToPosition(int position)
 {
-	const char* serialNo = strSerialNo.c_str();//转换
+	const char* hMotor = serialNo.c_str();//转换
 
 	// move to position (channel 1)//！！作用未知
-	CC_ClearMessageQueue(serialNo);//清空消息队列
-	CC_MoveToPosition(serialNo, position);//发送移动信号
+	CC_ClearMessageQueue(hMotor);//清空消息队列
+	CC_MoveToPosition(hMotor, position);//发送移动信号
 
 	//等待移动完成
 	WORD messageType;
 	WORD messageId;
 	DWORD messageData;
-	CC_WaitForMessage(serialNo, &messageType, &messageId, &messageData);
+	CC_WaitForMessage(hMotor, &messageType, &messageId, &messageData);
 	while (messageType != 2 || messageId != 1)
 	{
-		CC_WaitForMessage(serialNo, &messageType, &messageId, &messageData);
+		CC_WaitForMessage(hMotor, &messageType, &messageId, &messageData);
 	}
 
 	// get actual poaition
-	int pos = CC_GetPosition(serialNo);
+	int pos = CC_GetPosition(hMotor);
 
 	return pos;//返回实际位置
 }

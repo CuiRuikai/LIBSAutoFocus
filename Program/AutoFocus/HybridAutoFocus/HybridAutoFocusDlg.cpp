@@ -175,6 +175,7 @@ void CHybridAutoFocusDlg::OnBnClickedGetmotors()
 	if (size == 0) 
 	{
 		MessageBox(_T("No Motor. Please check "), _T("OK"), MB_OK);
+		return;
 	}
 	CString deviceNum;//临时存储设备编号的CString变量
 	for (int i = 0; i < size; i++)//遍历全部设备编号
@@ -182,7 +183,7 @@ void CHybridAutoFocusDlg::OnBnClickedGetmotors()
 		deviceNum = serialNumbers[i].c_str();//转换
 		m_MotorBox.AddString(deviceNum);//添加
 	}
-	m_MotorBox.SetCurSel(0);// 默认选择第一项 
+	serialNo = serialNumbers[0];
 }
 
 
@@ -203,7 +204,7 @@ void CHybridAutoFocusDlg::OnCbnSelchangeMotorbox()
 void CHybridAutoFocusDlg::OnBnClickedOpenmotor()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	if (motor.connect(serialNo) == false)
+	if (motor.connect() == false)
 		MessageBox(_T("TDC打开失败"), _T("Warning"), MB_OK);
 	else
 		MessageBox(_T("TDC打开成功"), _T("Message"), MB_OK);
@@ -213,7 +214,7 @@ void CHybridAutoFocusDlg::OnBnClickedOpenmotor()
 void CHybridAutoFocusDlg::OnBnClickedClosemotor()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	if (motor.disconnect(serialNo) == true)
+	if (motor.disconnect() == true)
 		MessageBox(_T("TDC成功关闭"), _T("Message"), MB_OK);
 	else
 		MessageBox(_T("TDC关闭失败"), _T("Message"), MB_OK);
@@ -230,7 +231,7 @@ void CHybridAutoFocusDlg::OnClose()
 	}
 	MVTerminateLib();
 	//电机关闭处理
-	motor.disconnect(serialNo);
+	motor.disconnect();
 	CDialogEx::OnClose();
 }
 

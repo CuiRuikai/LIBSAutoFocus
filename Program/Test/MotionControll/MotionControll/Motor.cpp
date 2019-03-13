@@ -54,9 +54,9 @@ int Motor::getDevices(int deviceID, std::vector<std::string> &serialNumbers, std
 	return 0;//失败则返回0，表示有0个电机
 }
 
-bool Motor::connect(std::string strSerialNo)
+bool Motor::connect()
 {
-	const char *serialNo = strSerialNo.c_str();//从string类型转换位const char*类型
+	const char *serialNo = this->serialNo.c_str();//从string类型转换位const char*类型
 
 	if (_connected)//如果为true，则返回true；表示以经打开了
 		return true;

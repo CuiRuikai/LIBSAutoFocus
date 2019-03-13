@@ -16,11 +16,11 @@ public:
 	//获取所有电机的编号
 	int getDevices(int deviceID, std::vector<std::string> &serialNumbers, std::vector<TLI_DeviceInfo> &vecDecviceInfo);
 	//连接电机
-	bool connect(std::string strSerialNo);
+	bool connect();
 	//断开连接
-	bool disconnect(std::string strSerialNo);
+	bool disconnect();
 	//移动到home
-	int moveToHome(std::string strSerialNo);
+	int moveToHome();
 	//移动到指定位置
-	int moveToPosition(std::string strSerialNo, int position);
-};
+	int moveToPosition(int position);
+}；
