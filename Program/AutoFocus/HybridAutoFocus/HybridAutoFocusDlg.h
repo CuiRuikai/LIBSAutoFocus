@@ -9,6 +9,7 @@
 #include"Utility.h"
 #include "MVGigE.h" 
 #include "MVImage.h" 
+#include"Motion.h"
 
 
 // CHybridAutoFocusDlg ¶Ô»°¿ò
