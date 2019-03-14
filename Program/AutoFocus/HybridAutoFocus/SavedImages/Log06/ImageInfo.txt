@@ -1,0 +1,55 @@
+Start Auto Focusing 
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0000.jpg	-2	150.965
+.\SavedImages\Image_0001.jpg	171526	195.999
+.\SavedImages\Image_0002.jpg	343055	237.144
+.\SavedImages\Image_0003.jpg	514583	211.637
+.\SavedImages\Image_0004.jpg	686110	167.856
+.\SavedImages\Image_0005.jpg	857606	136.088
+Focus Section: 171526 514583
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0006.jpg	171525	197.269
+.\SavedImages\Image_0007.jpg	240144	216.619
+.\SavedImages\Image_0008.jpg	308762	233.244
+.\SavedImages\Image_0009.jpg	377380	237.414
+.\SavedImages\Image_0010.jpg	445997	227.95
+.\SavedImages\Image_0011.jpg	514614	211.345
+Focus Section: 308762 445997
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0012.jpg	308760	232.382
+.\SavedImages\Image_0013.jpg	336214	236.598
+.\SavedImages\Image_0014.jpg	363669	238.513
+.\SavedImages\Image_0015.jpg	391124	237.075
+.\SavedImages\Image_0016.jpg	418577	233.608
+.\SavedImages\Image_0017.jpg	446030	228.634
+Focus Section: 336214 391124
+
+climbImg ClearPosImg position: 363667
+climbImg ClearPosImg score: 238.677
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0018.jpg	-2	151.095
+.\SavedImages\Image_0019.jpg	171525	196.039
+.\SavedImages\Image_0020.jpg	343052	237.492
+.\SavedImages\Image_0021.jpg	514579	212.16
+.\SavedImages\Image_0022.jpg	686104	165.799
+.\SavedImages\Image_0023.jpg	857605	130.821
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0024.jpg	171523	197.335
+.\SavedImages\Image_0025.jpg	240142	216.818
+.\SavedImages\Image_0026.jpg	308759	233.34
+.\SavedImages\Image_0027.jpg	377376	238.759
+.\SavedImages\Image_0028.jpg	445993	229.63
+.\SavedImages\Image_0029.jpg	514610	212.925
+Focus Position: 361814
+ployImg ClearPosImg position: 361813
+ployImg ClearPosImg score: 239.21
+

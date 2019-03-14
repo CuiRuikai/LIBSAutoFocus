@@ -1,0 +1,119 @@
+Auto Focusing 
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0000.jpg	-2	130.07
+.\SavedImages\Image_0001.jpg	171525	169.342
+.\SavedImages\Image_0002.jpg	343052	215.991
+.\SavedImages\Image_0003.jpg	514579	216.591
+.\SavedImages\Image_0004.jpg	686105	173.697
+.\SavedImages\Image_0005.jpg	857606	137.929
+Focus Section: 343052 686105
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0006.jpg	343050	219.114
+.\SavedImages\Image_0007.jpg	411667	228.702
+.\SavedImages\Image_0008.jpg	480284	223.442
+.\SavedImages\Image_0009.jpg	548900	208.932
+.\SavedImages\Image_0010.jpg	617516	190.063
+.\SavedImages\Image_0011.jpg	686132	171.883
+Focus Section: 343050 480284
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0012.jpg	343048	219.382
+.\SavedImages\Image_0013.jpg	370502	224.189
+.\SavedImages\Image_0014.jpg	397955	227.83
+.\SavedImages\Image_0015.jpg	425409	227.851
+.\SavedImages\Image_0016.jpg	452863	226.023
+.\SavedImages\Image_0017.jpg	480316	221.986
+Focus Section: 397955 452863
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0018.jpg	397953	228.312
+.\SavedImages\Image_0019.jpg	408939	228.62
+.\SavedImages\Image_0020.jpg	419924	228.281
+.\SavedImages\Image_0021.jpg	430913	227.901
+.\SavedImages\Image_0022.jpg	441900	226.868
+.\SavedImages\Image_0023.jpg	452887	225.397
+Focus Section: 397953 419924
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0024.jpg	397951	228.438
+.\SavedImages\Image_0025.jpg	402350	228.657
+.\SavedImages\Image_0026.jpg	406749	228.957
+.\SavedImages\Image_0027.jpg	411148	229.02
+.\SavedImages\Image_0028.jpg	415546	228.86
+.\SavedImages\Image_0029.jpg	419942	228.727
+Focus Section: 406749 415546
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0030.jpg	406748	229.254
+.\SavedImages\Image_0031.jpg	408511	229.152
+.\SavedImages\Image_0032.jpg	410273	229.361
+.\SavedImages\Image_0033.jpg	412035	229.147
+.\SavedImages\Image_0034.jpg	413796	228.991
+.\SavedImages\Image_0035.jpg	415557	228.943
+Focus Section: 408511 412035
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0036.jpg	408510	229.369
+.\SavedImages\Image_0037.jpg	409216	228.923
+.\SavedImages\Image_0038.jpg	409919	229.339
+.\SavedImages\Image_0039.jpg	410627	229.246
+.\SavedImages\Image_0040.jpg	411332	229.488
+.\SavedImages\Image_0041.jpg	412038	229.374
+Focus Section: 410627 412038
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0042.jpg	410625	229.53
+.\SavedImages\Image_0043.jpg	410910	229.359
+.\SavedImages\Image_0044.jpg	411190	229.072
+.\SavedImages\Image_0045.jpg	411474	229.301
+.\SavedImages\Image_0046.jpg	411754	229.122
+.\SavedImages\Image_0047.jpg	412037	228.42
+Focus Section: 410625 410910
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0048.jpg	410623	228.876
+.\SavedImages\Image_0049.jpg	410681	228.812
+.\SavedImages\Image_0050.jpg	410735	228.992
+.\SavedImages\Image_0051.jpg	410793	228.664
+.\SavedImages\Image_0052.jpg	410847	229.151
+.\SavedImages\Image_0053.jpg	410905	229.312
+Focus Section: 410847 410905
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0054.jpg	410846	229.531
+.\SavedImages\Image_0055.jpg	410857	229.619
+.\SavedImages\Image_0056.jpg	410866	229.679
+.\SavedImages\Image_0057.jpg	410879	229.796
+.\SavedImages\Image_0058.jpg	410885	229.904
+.\SavedImages\Image_0059.jpg	410900	229.963
+Focus Section: 410885 410900
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0060.jpg	410884	229.774
+.\SavedImages\Image_0061.jpg	410888	229.668
+.\SavedImages\Image_0062.jpg	410888	229.813
+.\SavedImages\Image_0063.jpg	410888	229.89
+.\SavedImages\Image_0064.jpg	410888	229.675
+.\SavedImages\Image_0065.jpg	410888	230.138
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0066.jpg	410886	229.198
+.\SavedImages\Image_0067.jpg	410884	229.101
+.\SavedImages\Image_0068.jpg	410883	229.723
+.\SavedImages\Image_0069.jpg	410882	221.517
+.\SavedImages\Image_0070.jpg	410881	99.4653
+.\SavedImages\Image_0071.jpg	410880	106.98
+Focus Position: 0

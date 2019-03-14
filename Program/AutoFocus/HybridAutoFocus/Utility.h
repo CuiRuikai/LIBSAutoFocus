@@ -19,6 +19,7 @@ public:
 	CString AllocateImgName();
 	//寻找清晰范围
 	int FindClearSection(std::vector<MyImg> imgVec,int &start, int &end);
+	int FindClearPos(std::vector<MyImg> imgVec);
 	//拟合寻找最优点
 	int ployfitPos(std::vector<MyImg> imgVec);
 	//将图片信息输出到文件

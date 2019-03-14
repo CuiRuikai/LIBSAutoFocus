@@ -63,3 +63,26 @@ int Motion::moveAndGrabImgs(int startPos, int stopPos, int step, std::vector<MyI
 	}
 	return starIndex;
 }
+
+MyImg Motion::moveToPosAndGrab(int pos, std::string imgName)
+{
+	pos = motor.moveToPosition(pos);
+	//停稳
+	CTime t1 = CTime::GetCurrentTime();
+	while ((CTime::GetCurrentTime() - t1) < 2);
+	imgName = ".\\SavedImages\\Image_" + imgName;
+	CString CSimgName = utility.toCString(imgName);
+	MVImage tImage;
+
+	EnterCriticalSection(&m_csSaveImage);//进入临界区
+	tImage.Create(m_image.GetWidth(), m_image.GetHeight(), m_image.GetBPP());
+	memcpy(tImage.GetBits(), m_image.GetBits(), tImage.GetPitch()*tImage.GetHeight());
+	LeaveCriticalSection(&m_csSaveImage);//退出临界区
+	tImage.Save(CSimgName);
+
+	tImage.Destroy();
+
+	//存储到imgVec
+	MyImg tImg(imgName, pos);
+	return tImg;
+}

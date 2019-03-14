@@ -279,7 +279,7 @@ void CHybridAutoFocusDlg::OnBnClickedOpencam()
 		MessageBox(_T("设置包大小失败"), _T("提示"), MB_OK);
 		return;
 	}
-	MVSetExposureTime(m_hCam, 240000);//手动设置曝光时间
+	MVSetExposureTime(m_hCam, 100000);//手动设置曝光时间
 	if (r == MVST_SUCCESS) {
 		MessageBox(_T("相机成功打开"), _T("提示"), MB_OK);
 		return;
@@ -341,31 +341,48 @@ void CHybridAutoFocusDlg::OnBnClickedStartfocus()
 	m_bRun = true;
 
 	Motion motion(motor, m_hCam, m_image, utility);
-	int start = LENGTH_MIN, end = LENGTH_MAX;
+	int start1 = LENGTH_MIN, end1 = LENGTH_MAX;
 
 	//for Test 
 	std::string pathName = ".\\SavedImages\\ImageInfo.txt";
 	std::ofstream recordFile(pathName, std::ios::app);
-	recordFile << "Focus Position: " << std::endl;
+	recordFile << "Start Auto Focusing " << std::endl << std::endl;
 	//Test 1: 改进的爬山算法
-	for (int i = 0; i < 10; i++) 
+	int clearPos;
+	for (int i = 0; i < 3; i++) 
 	{
 		std::vector<MyImg> imgVec;
-		motion.moveAndGrabImgs(start, end, 5, imgVec);
+		motion.moveAndGrabImgs(start1, end1, 5, imgVec);
 		utility.writeInfoToFile(imgVec);
-		utility.FindClearSection(imgVec, start, end);
-		recordFile << "Focus Section: " << start << " " << end << std::endl << std::endl;
+		utility.FindClearSection(imgVec, start1, end1);
+		recordFile << "Focus Section: " << start1 << " " << end1 << std::endl << std::endl;
+		clearPos = utility.FindClearPos(imgVec);
 	}
 
+	
+	std::string climbName = "climbImg.jpg";
+	MyImg climbImg=motion.moveToPosAndGrab(clearPos, climbName);
+	recordFile << "climbImg ClearPosImg position: " << climbImg.position << std::endl;
+	recordFile << "climbImg ClearPosImg score: " << climbImg.clarityScore << std::endl << std::endl;
+	
 	//Test 2:混合算法
+	int start2 = LENGTH_MIN, end2 = LENGTH_MAX;
 	std::vector<MyImg> imgVec;
-	motion.moveAndGrabImgs(start, end, 5, imgVec);
+	motion.moveAndGrabImgs(start2, end2, 5, imgVec);
 	utility.writeInfoToFile(imgVec);
-	utility.FindClearSection(imgVec, start, end);
+	utility.FindClearSection(imgVec, start2, end2);
 	std::vector<MyImg> secondFind;
-	motion.moveAndGrabImgs(start, end, 5, secondFind);
+	motion.moveAndGrabImgs(start2, end2, 5, secondFind);
 	utility.writeInfoToFile(secondFind);
-	int clearPos=utility.ployfitPos(secondFind);
+	clearPos=utility.ployfitPos(secondFind);
 	recordFile << "Focus Position: " <<clearPos<< std::endl;
 	motor.moveToPosition(clearPos);
+
+	
+	std::string ployName = "ployImg.jpg";
+	MyImg ployImg=motion.moveToPosAndGrab(clearPos, ployName);
+	recordFile << "ployImg ClearPosImg position: " << ployImg.position << std::endl;
+	recordFile << "ployImg ClearPosImg score: " << ployImg.clarityScore << std::endl << std::endl;
+
+	MessageBox(_T("对焦完毕"), _T("提示"), MB_OK);
 }

@@ -24,5 +24,6 @@ public:
 
 public:
 	int moveAndGrabImgs(int startPos, int stopPos, int step, std::vector<MyImg> &imgVec);
+	MyImg moveToPosAndGrab(int pos, std::string imgName);
 };
 

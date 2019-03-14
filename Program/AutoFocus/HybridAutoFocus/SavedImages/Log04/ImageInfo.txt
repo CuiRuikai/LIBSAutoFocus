@@ -1,0 +1,119 @@
+Start Auto Focusing 
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0000.jpg	-2	143.303
+.\SavedImages\Image_0001.jpg	171526	186.154
+.\SavedImages\Image_0002.jpg	343055	229.797
+.\SavedImages\Image_0003.jpg	514583	211.213
+.\SavedImages\Image_0004.jpg	686109	166.616
+.\SavedImages\Image_0005.jpg	857606	134.356
+Focus Section: 171526 514583
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0006.jpg	171525	186.265
+.\SavedImages\Image_0007.jpg	240145	205.875
+.\SavedImages\Image_0008.jpg	308765	224.111
+.\SavedImages\Image_0009.jpg	377384	233.078
+.\SavedImages\Image_0010.jpg	446003	226.336
+.\SavedImages\Image_0011.jpg	514621	211.111
+Focus Section: 308765 446003
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0012.jpg	308762	224.558
+.\SavedImages\Image_0013.jpg	336217	229.421
+.\SavedImages\Image_0014.jpg	363672	232.226
+.\SavedImages\Image_0015.jpg	391128	232.961
+.\SavedImages\Image_0016.jpg	418583	230.903
+.\SavedImages\Image_0017.jpg	446039	227.045
+Focus Section: 363672 418583
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0018.jpg	363670	232.899
+.\SavedImages\Image_0019.jpg	374659	233.129
+.\SavedImages\Image_0020.jpg	385648	232.72
+.\SavedImages\Image_0021.jpg	396639	232.972
+.\SavedImages\Image_0022.jpg	407628	231.902
+.\SavedImages\Image_0023.jpg	418617	230.923
+Focus Section: 363670 385648
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0024.jpg	363668	232.659
+.\SavedImages\Image_0025.jpg	368067	232.71
+.\SavedImages\Image_0026.jpg	372466	233.499
+.\SavedImages\Image_0027.jpg	376867	233.282
+.\SavedImages\Image_0028.jpg	381268	233.404
+.\SavedImages\Image_0029.jpg	385667	233.525
+Focus Section: 381268 385667
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0030.jpg	381266	233.758
+.\SavedImages\Image_0031.jpg	382149	233.529
+.\SavedImages\Image_0032.jpg	383029	233.743
+.\SavedImages\Image_0033.jpg	383909	232.942
+.\SavedImages\Image_0034.jpg	384789	233.299
+.\SavedImages\Image_0035.jpg	385670	233.482
+Focus Section: 381266 382149
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0036.jpg	381264	234.012
+.\SavedImages\Image_0037.jpg	381441	233.884
+.\SavedImages\Image_0038.jpg	381615	234.162
+.\SavedImages\Image_0039.jpg	381793	233.648
+.\SavedImages\Image_0040.jpg	381966	233.871
+.\SavedImages\Image_0041.jpg	382144	234.076
+Focus Section: 381441 381793
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0042.jpg	381439	233.907
+.\SavedImages\Image_0043.jpg	381511	233.71
+.\SavedImages\Image_0044.jpg	381577	233.814
+.\SavedImages\Image_0045.jpg	381648	233.807
+.\SavedImages\Image_0046.jpg	381715	234.12
+.\SavedImages\Image_0047.jpg	381786	233.926
+Focus Section: 381648 381786
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0048.jpg	381645	233.553
+.\SavedImages\Image_0049.jpg	381675	233.508
+.\SavedImages\Image_0050.jpg	381698	233.621
+.\SavedImages\Image_0051.jpg	381726	233.651
+.\SavedImages\Image_0052.jpg	381749	233.716
+.\SavedImages\Image_0053.jpg	381774	233.462
+Focus Section: 381726 381774
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0054.jpg	381723	233.503
+.\SavedImages\Image_0055.jpg	381738	233.61
+.\SavedImages\Image_0056.jpg	381743	233.958
+.\SavedImages\Image_0057.jpg	381754	233.271
+.\SavedImages\Image_0058.jpg	381760	233.836
+.\SavedImages\Image_0059.jpg	381771	233.293
+Focus Section: 381738 381754
+
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0060.jpg	-2	144.982
+.\SavedImages\Image_0061.jpg	171526	188.377
+.\SavedImages\Image_0062.jpg	343055	231.871
+.\SavedImages\Image_0063.jpg	514583	212.152
+.\SavedImages\Image_0064.jpg	686110	168.111
+.\SavedImages\Image_0065.jpg	857606	135.875
+Focus Round Info:
+ImageName		Position	Score
+.\SavedImages\Image_0066.jpg	171524	189.252
+.\SavedImages\Image_0067.jpg	240143	208.87
+.\SavedImages\Image_0068.jpg	308761	226.245
+.\SavedImages\Image_0069.jpg	377379	234.859
+.\SavedImages\Image_0070.jpg	445997	227.572
+.\SavedImages\Image_0071.jpg	514615	212.153
+Focus Position: 375174

@@ -92,6 +92,19 @@ int Utility::FindClearSection(std::vector<MyImg> imgVec, int & start, int & end)
 	return end - start;//return the length of this section
 }
 
+int Utility::FindClearPos(std::vector<MyImg> imgVec)
+{
+	double maxScore = 0;
+	int maxIndex = 0;
+	for (int i = 0; i < imgVec.size(); i++)
+		if (maxScore < imgVec[i].clarityScore)
+		{
+			maxScore = imgVec[i].clarityScore;
+			maxIndex = i;
+		}
+	return imgVec[maxIndex].position;
+}
+
 int Utility::ployfitPos(std::vector<MyImg> imgVec)
 {
 	Fit fit;
