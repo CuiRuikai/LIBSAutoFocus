@@ -1,3 +1,5 @@
+<p align="center"><img src="https://github.com/CuiRuikai/academic-kickstart/blob/master/content/project/autofocus-libs/featured.png?raw=true" alt="Img"></p>
+
 # LIBS Autofocus
 
 Laser-Induced Breakdown Spectroscopy (LIBS) can be used to analyse the composition of materials. However, to improve the accuracy, multiple measurements at different angles are necessary. As the surface of samples is not even, a lens needs to be manually adjusted to let the laser focus on the surface. So, my supervisor asked to develop an autofocus system for this spectroscopy.
